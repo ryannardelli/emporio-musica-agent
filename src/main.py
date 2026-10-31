@@ -1,7 +1,9 @@
-from services.llm_service import generate_response
+from agent.agent import process_message
 
 
 def main():
+    history = []
+
     print("=== Empório da Música ===")
     print("Digite 'sair' para encerrar.")
 
@@ -11,7 +13,7 @@ def main():
         if message.lower() == "sair":
             break
 
-        response = generate_response(message)
+        response = process_message(message, history)
 
         print(f"\nAtendente: {response}")
 

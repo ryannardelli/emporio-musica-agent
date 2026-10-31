@@ -11,25 +11,11 @@ HOST = os.getenv("OLLAMA_HOST")
 client = ollama.Client(host=HOST)
 
 
-def generate_response(message):
+def generate_response(messages, tools=None):
     response = client.chat(
         model=MODEL,
-        messages=[
-            {
-                "role": "system",
-                "content": """
-                    Você é o assistente virtual da Empório da Música,
-                    uma loja de instrumentos musicais localizada em Campo Grande/MS.
-
-                    Seja educado, cordial e prestativo.
-                    Responda em português brasileiro.
-                """
-            },
-            {
-                "role": "user",
-                "content": message
-            }
-        ]
+        messages=messages,
+        tools=tools or []
     )
 
-    return response.message.content
+    return response
