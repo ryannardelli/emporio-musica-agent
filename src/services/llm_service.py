@@ -15,7 +15,8 @@ def generate_response(messages, tools=None):
     response = client.chat(
         model=MODEL,
         messages=messages,
-        tools=tools or []
+        tools=tools or [],
+        stream=True
     )
 
     return response

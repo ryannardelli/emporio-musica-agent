@@ -15,7 +15,8 @@ def main():
 
         response = process_message(message, history)
 
-        print(f"\nAtendente: {response}")
+        history.append({"role": "user", "content": message})
+        history.append({"role": "assistant", "content": response})
 
 
 if __name__ == "__main__":
