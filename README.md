@@ -191,7 +191,7 @@ pip install -r requirements.txt
 
 ### 4. Configure environment variables
 
-Create a `.env` file in the project root based on `.env.example`.
+Create a `.env` file in the project root.
 
 Example:
 
