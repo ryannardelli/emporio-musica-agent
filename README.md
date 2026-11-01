@@ -46,6 +46,12 @@ emporio-musica-agent/
 │   │   ├── policies.py
 │   │   ├── tool_definitions.py
 │   │
+│   ├── flows/
+│   │   ├── fallback_flow.py
+│   │   ├── order_flow.py
+│   │   ├── policy_flow.py
+│   │   ├── product_flow.py
+│   │
 │   ├── repositories/
 │   │   ├── product_repository.py
 │   │
