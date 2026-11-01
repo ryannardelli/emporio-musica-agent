@@ -4,7 +4,6 @@ import pandas as pd
 
 
 class ProductRepository:
-
     def __init__(self):
         csv_path = Path(__file__).resolve().parents[2] / "data" / "products.csv"
         self.products = pd.read_csv(csv_path)
@@ -22,7 +21,7 @@ class ProductRepository:
 
     def get_products_by_max_price(self, max_price):
         result = self.products[
-            (self.products["price"] <= max_price) &
+            (self.products["price_brl"] <= max_price) &
             (self.products["stock_quantity"] > 0)
         ]
 

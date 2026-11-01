@@ -8,31 +8,37 @@ def load_document(path):
     text = ""
 
     for page in reader.pages:
-        text += page.extract_text() or ""
+        text += (page.extract_text() or "") + "\n"
 
-    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
 
-    return text
+    return text.strip()
 
 
 def split_text(text, chunk_size=800, overlap=150):
     chunks = []
 
-    start = 0
+    paragraphs = text.split("\n")
 
-    while start < len(text):
-        end = start + chunk_size
+    current_chunk = ""
 
-        if end < len(text):
-            end = text.rfind(".", start, end)
+    for paragraph in paragraphs:
+        paragraph = paragraph.strip()
 
-            if end == -1 or end <= start:
-                end = start + chunk_size
+        if not paragraph:
+            continue
 
-        chunk = text[start:end]
+        if len(current_chunk) + len(paragraph) > chunk_size:
+            if current_chunk:
+                chunks.append(current_chunk.strip())
 
-        chunks.append(chunk)
+            current_chunk = current_chunk[-overlap:] + " " + paragraph
 
-        start = end - overlap
+        else:
+            current_chunk += " " + paragraph
+
+    if current_chunk.strip():
+        chunks.append(current_chunk.strip())
 
     return chunks
