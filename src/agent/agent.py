@@ -1,13 +1,30 @@
 from agent.prompts import SYSTEM_PROMPT
 from services.llm_service import generate_response
+from rag.retriever import search_documents
+
 
 def process_message(message, history):
+    context = search_documents(message)
+
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT}
     ]
 
     messages.extend(history)
-    messages.append({"role": "user", "content": message})
+
+    messages.append({
+        "role": "user",
+        "content": f"""
+            Pergunta do cliente:
+            {message}
+
+            Contexto encontrado nas políticas da loja:
+            {context}
+
+            Utilize o contexto quando ele for relevante para responder.
+            Não invente informações que não estejam disponíveis.
+        """
+    })
 
     response = generate_response(messages)
 

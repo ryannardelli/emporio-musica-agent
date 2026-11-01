@@ -1,8 +1,11 @@
 from agent.agent import process_message
+from rag.indexer import index_policies
 
 
 def main():
     history = []
+
+    index_policies()
 
     print("=== Empório da Música ===")
     print("Digite 'sair' para encerrar.")
