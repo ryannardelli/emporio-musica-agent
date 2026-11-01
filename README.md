@@ -1,4 +1,4 @@
-# Empório da Música — AI Customer Support Agent
+# Empório da Música - AI Customer Support Agent
 
 An AI-powered customer support agent developed in Python as part of the **AI Engineer Technical Challenge for Artefact**.
 
@@ -259,6 +259,6 @@ The architecture, technical decisions, and implementation were evaluated and ada
 
 ## Author
 
-Developed as part of the **AI Engineer Technical Challenge — Artefact**.
+Developed as part of the **AI Engineer Technical Challenge - Artefact**.
 
 ---
