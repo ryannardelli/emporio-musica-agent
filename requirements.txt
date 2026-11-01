@@ -1,4 +1,5 @@
 pandas
+ollama
 pypdf
 chromadb
 python-dotenv

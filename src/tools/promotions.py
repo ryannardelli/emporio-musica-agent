@@ -1,4 +1,4 @@
-from src.repositories.promotion_repository import PromotionRepository
+from repositories.promotion_repository import PromotionRepository
 
 repository = PromotionRepository()
 

@@ -1,4 +1,4 @@
-from src.rag.retriever import search_documents
+from rag.retriever import search_documents
 
 
 def search_policies(question: str):

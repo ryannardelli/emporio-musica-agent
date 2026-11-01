@@ -25,8 +25,12 @@ def generate_embedding(text):
 
     return response["embeddings"][0]
 
-
 def index_documents(chunks):
+    existing_documents = collection.get()
+
+    if existing_documents["ids"]:
+        collection.delete(ids=existing_documents["ids"])
+
     for index, chunk in enumerate(chunks):
         embedding = generate_embedding(chunk)
 
@@ -36,8 +40,7 @@ def index_documents(chunks):
             embeddings=[embedding]
         )
 
-
-def search_documents(query, n_results=3):
+def search_documents(query, n_results=5):
     embedding = generate_embedding(query)
 
     results = collection.query(

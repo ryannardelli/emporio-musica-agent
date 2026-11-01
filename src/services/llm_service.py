@@ -10,7 +10,6 @@ HOST = os.getenv("OLLAMA_HOST")
 
 client = ollama.Client(host=HOST)
 
-
 def generate_response(messages, tools=None):
     response = client.chat(
         model=MODEL,
